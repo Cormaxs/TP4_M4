@@ -1,5 +1,5 @@
 import React from 'react';
-import { Buscador } from './Buscador';
+import { Buscador } from './buscador';
 
 export const Cuerpo = () => {
   return (
