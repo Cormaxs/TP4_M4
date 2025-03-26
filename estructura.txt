@@ -1,0 +1,20 @@
+src/
+│
+├── assets/
+│   └── logo.webp
+│
+├── components/
+│   ├── Body.jsx
+│   ├── Buscador.jsx
+│   ├── Cards.jsx
+│   ├── Footer.jsx
+│   ├── Menu.jsx
+│
+├── context/
+│   └── Funcionalidades.jsx
+│
+├── services/
+│   └── api.js
+│
+├── App.jsx
+└── index.js
