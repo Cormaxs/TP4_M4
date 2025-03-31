@@ -6,6 +6,7 @@ Aplicación React para explorar personajes de Rick and Morty que incluye:
 - 📱 **Diseño responsive con animaciones**
 - 📌 **Panel lateral de favoritos interactivo**
 - 🔔 **Notificaciones toast para feedback**
+- ⚡ **Optimizada para rendimiento con React.memo y Lazy Loading**
 
 ---
 
@@ -15,16 +16,19 @@ src/
 │
 ├── components/
 │   ├── Body.jsx          # Componente principal del cuerpo
-│   ├── buscador.jsx      # Lógica de búsqueda y formulario
-│   ├── cards.jsx         # Tarjetas de personajes y favoritos
-│   ├── footer.jsx        # Pie de página
-│   ├── menu.jsx          # Barra de navegación responsive
+│   ├── Buscador.jsx      # Lógica de búsqueda y formulario
+│   ├── Cards.jsx         # Tarjetas de personajes y favoritos
+│   ├── Footer.jsx        # Pie de página
+│   ├── Menu.jsx          # Barra de navegación responsive
 │
 ├── context/
 │   └── Funcionalidades.js # Contexto de favoritos (state management)
 │
 ├── services/
 │   └── api.js            # Conexión con la API externa
+│
+├── hooks/
+│   └── useLocalStorage.js # Hook personalizado para manejo de favoritos
 │
 ├── assets/
 │   └── logo.webp         # Assets/imágenes
@@ -45,26 +49,39 @@ src/
 - `App.jsx` carga el contexto de favoritos mediante `FavProvider`
 - Renderiza la estructura básica (`Menu + Cuerpo + Footer`)
 - Implementa notificaciones con `react-toastify`
+- Carga favoritos desde `localStorage`
 
-#### 🔹 **Búsqueda (`buscador.jsx`):**
+#### 🔹 **Búsqueda (`Buscador.jsx`):**
 ```javascript
 const Captura = async (e) => {
-  e.preventDefault();
-  const data = await API(parametros, resultados);
-  setRespuesta(data || []);
-};
+    e.preventDefault();
+    setRespuesta([]);
+    setError(null);
+    setCarga(true);
+    const data = await API(parametros, resultados);
+    if (data) {
+      setRespuesta(data);
+    } else {
+      setError("No se encontraron personajes");
+    }
+    setCarga(false);
+  };
 ```
 
 #### 🔹 **Favoritos (`Funcionalidades.js`):**
 ```javascript
-const toggleFavorito = (character) => {
-  setFavoritos(prev => {
-    const existe = prev.some(p => p.id === character.id);
-    return existe 
-      ? prev.filter(p => p.id !== character.id)
-      : [...prev, character];
-  });
-};
+ const toggleFavorito = (character) => {
+    setFavoritos((prev) => {
+      const existe = prev.some((personaje) => personaje.id === character.id);
+      if (existe) {
+        toast.error(`${character.name} eliminado de favoritos!`);
+        return prev.filter((personaje) => personaje.id !== character.id);
+      } else {
+        toast.success(`${character.name} agregado a favoritos!`);
+        return [...prev, character];
+      }
+    });
+  };
 ```
 
 ---
@@ -81,8 +98,14 @@ Muestra grid de personajes con:
 - ✅ Panel lateral de favoritos
 - 🎞️ Animaciones con Framer Motion
 - 🖱️ Detección de clicks fuera del panel
+- 📷 Lazy Loading de imágenes
 
-### 3️⃣ **Menu.jsx**
+### 3️⃣ **Favoritos.jsx**
+- 📜 Lista interactiva con eliminación de personajes
+- 🛑 Botón para limpiar todos los favoritos
+- 🔄 Sincronización en tiempo real con `localStorage`
+
+### 4️⃣ **Menu.jsx**
 Navbar responsive con:
 - 🍔 Menú hamburguesa para móviles
 - 🎭 Transiciones animadas
@@ -109,7 +132,7 @@ export const API = async (parametros, limite) => {
 ---
 
 ## 💾 Persistencia de Datos
-Los favoritos se guardan en `localStorage`:
+Los favoritos se guardan en `localStorage` utilizando un hook personalizado:
 ```javascript
 useEffect(() => {
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
@@ -160,6 +183,19 @@ http://localhost:5173
 
 ## 📝 Notas Adicionales
 - 📱 **Optimizado para móviles (touch events)**
+- ⚡ **Lazy Loading en imágenes para mejorar rendimiento**
 - 🏗 **Accesibilidad básica implementada (roles ARIA)**
 - 🎨 **Efectos de hover/click en todos los elementos interactivos**
 - 📝 **Código documentado con comentarios explicativos**
+- 🔄 **Sincronización con `localStorage` en tiempo real**
+
+---
+
+## 🏗️ Mejoras Futuras
+- 🎤 **Búsqueda por voz usando Web Speech API**
+- 🌎 **Soporte para múltiples idiomas**
+- 📊 **Dashboard de estadísticas sobre personajes favoritos**
+
+---
+
+
