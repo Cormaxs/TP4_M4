@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 export const FavoritosContext = createContext();//creo el contexto
 
 export const FavProvider = ({ children }) => { //creo el provider
-  const [favoritos, setFavoritos] = useState(() => {
+  const [favoritos, setFavoritos] = useState(() => {//busco si hay favoritos en localstorage
     return JSON.parse(localStorage.getItem("favoritos")) || [];
   });
 
