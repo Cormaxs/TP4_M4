@@ -1,6 +1,8 @@
 # 📌 Descripción del Proyecto
 Aplicación React para explorar personajes de Rick and Morty que incluye:
 
+[Visita mi aplicación](https://tp-4-m4.vercel.app/)
+
 - 🔍 **Búsqueda de personajes por nombre**
 - ⭐ **Sistema de favoritos persistente**
 - 📱 **Diseño responsive con animaciones**
