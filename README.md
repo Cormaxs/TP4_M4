@@ -188,11 +188,4 @@ http://localhost:5173
 
 ---
 
-## 🏗️ Mejoras Futuras
-- 🎤 **Búsqueda por voz usando Web Speech API**
-- 🌎 **Soporte para múltiples idiomas**
-- 📊 **Dashboard de estadísticas sobre personajes favoritos**
-
----
-
 
