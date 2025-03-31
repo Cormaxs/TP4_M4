@@ -6,7 +6,7 @@ Aplicación React para explorar personajes de Rick and Morty que incluye:
 - 📱 **Diseño responsive con animaciones**
 - 📌 **Panel lateral de favoritos interactivo**
 - 🔔 **Notificaciones toast para feedback**
-- ⚡ **Optimizada para rendimiento con React.memo y Lazy Loading**
+
 
 ---
 
