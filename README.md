@@ -22,7 +22,7 @@ src/
 │   ├── Menu.jsx          # Barra de navegación responsive
 │
 ├── context/
-│   └── Funcionalidades.js # Contexto de favoritos (state management)
+│   └── Funcionalidades.js # Contexto de favoritos 
 │
 ├── services/
 │   └── api.js            # Conexión con la API externa
@@ -95,11 +95,10 @@ Muestra grid de personajes con:
 - ✅ Panel lateral de favoritos
 - 🎞️ Animaciones con Framer Motion
 - 🖱️ Detección de clicks fuera del panel
-- 📷 Lazy Loading de imágenes
+
 
 ### 3️⃣ **Favoritos.jsx**
 - 📜 Lista interactiva con eliminación de personajes
-- 🛑 Botón para limpiar todos los favoritos
 - 🔄 Sincronización en tiempo real con `localStorage`
 
 ### 4️⃣ **Menu.jsx**
@@ -129,7 +128,7 @@ export const API = async (parametros, limite) => {
 ---
 
 ## 💾 Persistencia de Datos
-Los favoritos se guardan en `localStorage` utilizando un hook personalizado:
+Los favoritos se guardan en `localStorage` utilizando:
 ```javascript
 useEffect(() => {
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
@@ -180,12 +179,8 @@ http://localhost:5173
 
 ## 📝 Notas Adicionales
 - 📱 **Optimizado para móviles (touch events)**
-- ⚡ **Lazy Loading en imágenes para mejorar rendimiento**
-- 🏗 **Accesibilidad básica implementada (roles ARIA)**
-- 🎨 **Efectos de hover/click en todos los elementos interactivos**
+- 🎨 **Efectos de hover/click en los elementos interactivos**
 - 📝 **Código documentado con comentarios explicativos**
-- 🔄 **Sincronización con `localStorage` en tiempo real**
-
 ---
 
 
