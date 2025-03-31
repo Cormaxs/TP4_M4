@@ -27,14 +27,11 @@ src/
 ├── services/
 │   └── api.js            # Conexión con la API externa
 │
-├── hooks/
-│   └── useLocalStorage.js # Hook personalizado para manejo de favoritos
 │
 ├── assets/
 │   └── logo.webp         # Assets/imágenes
 │
-├── styles/
-│   └── index.css         # Estilos globales con Tailwind CSS y Bootstrap Icons
+├── index.css         # Estilos globales con Tailwind CSS y Bootstrap Icons
 │
 ├── App.jsx               # Componente raíz de la aplicación
 └── main.jsx              # Punto de entrada
