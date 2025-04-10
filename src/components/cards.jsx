@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { FavoritosContext } from "../context/Funcionalidades";
 
-export const Cards = ({ personajes }) => {
+export const Cards = ({ personajes = [] }) => {
   const { favoritos, toggleFavorito } = useContext(FavoritosContext);//importo desde context lo que voy a usar
   const [mostrarFavoritos, setMostrarFavoritos] = useState(false);//oculta o no los favoritos
   const panelRef = useRef(null);//crea una referencia mutable, detecta clicks feura del panel de favoritos
